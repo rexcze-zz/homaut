@@ -1,0 +1,9 @@
+[Unit]
+Description=Power off HDMI
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tvservice -o
+User=root
+Group=root
+

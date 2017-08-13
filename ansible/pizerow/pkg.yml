@@ -1,0 +1,8 @@
+# vim:ft=ansible:
+---
+- hosts: all
+  vars:
+    pkgs: [ 'mc', 'htop', 'docker.io' ]
+  tasks:
+    - name: Installs packages
+      apt: pkg={{ pkgs }} state=latest update_cache=true
