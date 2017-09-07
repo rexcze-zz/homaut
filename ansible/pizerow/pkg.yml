@@ -2,17 +2,7 @@
 ---
 - hosts: rpies
   vars:
-    pkgs: [ 'apt-transport-https', 'ca-certificates', 'curl', 'docker.io', 'docker-compose', 'gnupg2', 'htop', 'mc', 'software-properties-common' ]
+    pkgs: [ 'apt-transport-https', 'ca-certificates', 'curl', 'docker.io', 'gnupg2', 'htop', 'mc' ]
   tasks:
-    #    - name: Docker CE official gpg key
-    #  apt_key:
-    #    id: 0EBFCD88
-    #    url: "https://download.docker.com/linux/debian/gpg"
-    #    state: present
-
-    #- name: Docker CE repos
-    #  apt_repository:
-    #    repo: deb [arch=armhf] https://download.docker.com/linux/debian stretch stable
-
     - name: Install packages
       apt: pkg={{ pkgs }} state=latest update_cache=true
