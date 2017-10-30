@@ -2,7 +2,7 @@
 ---
 - hosts: rpies
   vars:
-    pkgs: [ 'apt-transport-https', 'ca-certificates', 'curl', 'docker.io', 'gnupg2', 'htop', 'mc', 'watchdog' ]
+    pkgs: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'htop', 'mc', 'npm', 'nodejs', 'node-klaw', 'watchdog' ]
   tasks:
     - name: Install packages
       apt: pkg={{ pkgs }} state=latest update_cache=true

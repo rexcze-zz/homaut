@@ -1,0 +1,15 @@
+# vim:ft=ansible:
+---
+- hosts: rpies
+  tasks:
+    - name: Enable watchdog to be visible to system
+      lineinfile:
+        path: /boot/config.txt
+        line: 'dtparam=watchdog=on'
+
+    - name: Start and enable watchdog
+      systemd:
+        state: started
+        daemon_reload: yes
+        name: watchdog
+        enabled: True

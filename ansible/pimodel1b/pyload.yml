@@ -1,0 +1,26 @@
+# vim:ft=ansible:
+---
+- hosts: rpies
+  tasks:
+    - name: Copy systemd files to disable hdmi power
+      copy:
+        src: files/pyload/config
+        dest: /etc/systemd/system/
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Copy systemd timer
+      copy: 
+        src: files/powermgmt/hdmioff.timer
+        dest: /etc/systemd/system/
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Deploy services
+      systemd:
+        state: started
+        daemon_reload: yes
+        name: hdmioff.timer
+        enabled: True
